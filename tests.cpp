@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int main() {
+int main() { 
     Graph *g1 = NULL;
     Graph *g2 = NULL;
 
@@ -24,13 +24,37 @@ int main() {
     cout << "Test_1\tpassed" << endl;
     cout << "Test_2_create_graph_with_size" << endl;
     try {
-        g2 = new Graph(5);
+        g2 = new Graph(0);
     } catch (...) {
         cout << "Test_2\tfailed" << endl;
     }
     cout << "Test_2\tpassed" << endl;
+    
 
 
+
+
+
+
+
+
+
+    
+    cout << g1;
+
+    cout << g2;
+    g2 = NULL;
+    try {
+        cout << g2;
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_print_NULL\tpassed\n";
+        else
+            cout << "Test_print_NULL\tfailed\n";
+    } catch (...) {
+        cout << "Test_print_NULL\tfailed\n";
+    }
+    
 
     delete g1;
     delete g2;

@@ -16,6 +16,16 @@ Graph::Graph(int size) {
     g_values = new int [size];
     g_size = size;
 }
+/*
+Graph::Graph(const Graph &g) {
+    int n = g.g_size;
+    g_edges = new int* [n];
+    for (int i = 0; i < n; ++i)
+        g_edges[i] = new int [n];
+    g_values = new int [n];
+    g_size = n;
+}
+*/
 
 Graph::~Graph() {
     delete [] g_values;

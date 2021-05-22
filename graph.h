@@ -1,7 +1,10 @@
 #ifndef _GRAPH_H_
 #define _GRAPH_H_
 
-#define GRAPH_SIZE 10
+#include <iostream>
+#include <cstring>
+
+#define GRAPH_SIZE 3
 
 using namespace std;
 
@@ -10,13 +13,39 @@ class Graph
 public:
     enum graph_error {
         EINVARG = 1,
-        EEXIST,
-        ENEXIST
+        EEXISTS,
+        ENEXISTS
     };
 
     Graph();
     Graph (int size);
+    Graph (const Graph &g);
     ~Graph();
+
+    friend ostream &operator<<(ostream &output, const Graph *g) {
+        if (g == NULL) {
+            throw EINVARG;
+        }
+        if ((*g).g_size == 0) {
+            output << "No vertices in graph" << endl;
+            return output;
+        }
+        output << "Number of vertices - " << (*g).g_size << "\n";
+        for (int i = 0; i < (*g).g_size; ++i)
+            output <<  "\t" << i;
+        output << "\n";
+        for (int i = 0; i < (*g).g_size; ++i) {
+            output << i << "\t";
+            for (int j = 0; j < (*g).g_size; ++j) 
+                output << (*g).g_edges[i][j] << "\t";
+            output << "\n";
+        }
+        for (int i = 0; i < (*g).g_size; ++i)
+            output << i << "\t" << (*g).g_values[i] << endl;
+        
+        return output;
+    }
+
 
 private:
     int **g_edges;
