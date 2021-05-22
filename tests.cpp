@@ -402,7 +402,7 @@ int main() {
     } catch (...) {
         cout << "Test_40\t\tfailed\n";
     }
-    cout << "Test_41_edge_cost:\n";
+    cout << "Test_41_add_value:\n";
     try {
         g1->add_value(0, 1);
     } catch (...) {
@@ -420,6 +420,58 @@ int main() {
     } catch (...) {
         cout << "Test_42\t\tfailed\n";
     }
+    cout<<endl;
+
+
+
+
+    cout << "Test_43_add_or_replace_value_to_vertex_<_0:\n";
+    try {
+        g1->add_or_replace_value(-1, 0);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_43\t\tpassed\n";
+        else
+            cout << "Test_43\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_43\t\tfailed\n";
+    }
+    cout << "Test_44_add_or_replace_value_to_vertex_>_n:\n";
+    try {
+        g1->add_or_replace_value(15, 0);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_44\t\tpassed\n";
+        else
+            cout << "Test_44\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_44\t\tfailed\n";
+    }
+    cout << "Test_45_add_or_replace_value_<_1:\n";
+    try {
+        g1->add_or_replace_value(0, -1);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_45\t\tpassed\n";
+        else
+            cout << "Test_45\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_45\t\tfailed\n";
+    }
+    cout << "Test_46_add_or_replace_value:\n";
+    try {
+        g1->add_or_replace_value(1, 1);
+    } catch (...) {
+        cout << "Test_46\t\tfailed\n";
+    }
+    cout << "Test_46\t\tpassed\n";
+    cout << "Test_47_add_or_replace_value_already_exists:\n";
+    try {
+        g1->add_or_replace_value(0, 3);
+    } catch (...) {
+        cout << "Test_47\t\tfailed\n";
+    }
+    cout << "Test_47\t\tpassed\n";
     cout<<endl;
 
 

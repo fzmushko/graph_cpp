@@ -1,19 +1,33 @@
 #include "graph.h"
 #include <stdlib.h>
 
+const int vertex_without_value = 0;
+
 Graph::Graph() {
     g_edges = new int* [GRAPH_SIZE];
     for (int i = 0; i < GRAPH_SIZE; ++i)
         g_edges[i] = new int [GRAPH_SIZE];
     g_values = new int [GRAPH_SIZE];
+    for (int i = 0; i < GRAPH_SIZE; ++i)
+        g_values[i] = vertex_without_value;
+    for (int i = 0; i < GRAPH_SIZE; ++i) {
+        for (int j = 0; j < GRAPH_SIZE; ++j)
+            g_edges[i][j] = 0;
+    }
     g_size = GRAPH_SIZE;
 }
 
 Graph::Graph(int size) {
     g_edges = new int* [size];
     for (int i = 0; i < size; ++i)
-        g_edges[i] = new int [size];
+        g_edges[i] = new int [size];        
     g_values = new int [size];
+    for (int i = 0; i < size; ++i)
+        g_values[i] = vertex_without_value;
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j)
+            g_edges[i][j] = 0;
+    }
     g_size = size;
 }
 /*
@@ -137,6 +151,10 @@ int Graph::value (int vertex_key, int recieved_value, bool true_if_add, bool tru
 
 void Graph::add_value (int vertex_key, int recieved_value) {
     int x = value (vertex_key, recieved_value, 1, 0);
+}
+
+void Graph::add_or_replace_value (int vertex_key, int recieved_value) {
+    int x = value(vertex_key, recieved_value, 1, 1);
 }
 /*
     if (true_if_add) {
