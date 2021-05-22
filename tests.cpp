@@ -369,6 +369,73 @@ int main() {
 
 
 
+    cout << "Test_38_add_value_to_vertex_<_0:\n";
+    try {
+        g1->add_value(-1, 0);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_38\t\tpassed\n";
+        else
+            cout << "Test_38\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_38\t\tfailed\n";
+    }
+    cout << "Test_39_add_value_to_vertex_>_n:\n";
+    try {
+        g1->add_value(15, 0);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_39\t\tpassed\n";
+        else
+            cout << "Test_39\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_39\t\tfailed\n";
+    }
+    cout << "Test_40_add_value_<_1:\n";
+    try {
+        g1->add_value(0, -1);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_40\t\tpassed\n";
+        else
+            cout << "Test_40\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_40\t\tfailed\n";
+    }
+    cout << "Test_41_edge_cost:\n";
+    try {
+        g1->add_value(0, 1);
+    } catch (...) {
+        cout << "Test_41\t\tfailed\n";
+    }
+    cout << "Test_41\t\tpassed\n";
+    cout << "Test_42_add_value_already_exists:\n";
+    try {
+        g1->add_value(0, 3);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EEXISTS)
+            cout << "Test_42\t\tpassed\n";
+        else
+            cout << "Test_42\t\tfailed\n";
+    } catch (...) {
+        cout << "Test_42\t\tfailed\n";
+    }
+    cout<<endl;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

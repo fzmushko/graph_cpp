@@ -26,7 +26,13 @@ public:
     void add_or_replace_edge (int from, int to, int cost);
     void remove_edge (int from, int to);
     int edge_cost (int from, int to);
-    
+    int value (int vertex_key, int recieved_value, bool true_if_add, bool true_if_replace_or_remove);
+    void add_value (int vertex_key, int recieved_value);
+    /*void add_or_replace_value (int vertex_key, int recieved_value);
+    void remove_value (int vertex_key);
+    int get_value (int vertex_key);
+    */
+
     friend ostream &operator<<(ostream &output, const Graph *g) {
         if (g == NULL) {
             throw EINVARG;

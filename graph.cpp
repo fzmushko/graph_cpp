@@ -98,46 +98,79 @@ void Graph::remove_edge (int from, int to) {
 int Graph::edge_cost (int from, int to) {
     return edge(from, to, 1, 0, 0);
 }
- /*
+
+int Graph::value (int vertex_key, int recieved_value, bool true_if_add, bool true_if_replace_or_remove) {
+    if (vertex_key < 0 || vertex_key >= g_size) {
+        cout << "Invalid argument: vertex key\n";
+        throw EINVARG;
+    }
+    if (recieved_value < 1) {
+        cout << "Invalid argument: value should be more than 0\n";
+        throw EINVARG;
+    }
     if (true_if_add) {
-        if (true_if_replace_or_remove) {
-            gr->key[from].adjacent_vertices[to] = cost;
-            if (err != NULL)
-                *err = ESUCCESS;
+        if (!true_if_replace_or_remove && g_values[vertex_key] != 0) {
+            cout << "The value already exists\n";
+            throw EEXISTS;
         }
         else {
-            if (gr->key[from].adjacent_vertices[to] == 0) {
-                if (err != NULL)
-                    *err = ESUCCESS;
-                gr->key[from].adjacent_vertices[to] = cost;
-            }
-            else {
-                fprintf (stdout, "The edge already exists\n");
-                if (err != NULL)
-                    *err = EEXIST;
-                return -1;
-            } 
+            g_values[vertex_key] = recieved_value;
+            return 0;
         }
-        return 0;
     }
     else {
         if (true_if_replace_or_remove) {
-            gr->key[from].adjacent_vertices[to] = 0;
+            g_values[vertex_key] = 0;
+            return 0;
+        }
+        else {
+            if (g_values[vertex_key] == 0) {
+                cout << "The value doesn't exist\n";
+                throw ENEXISTS;
+            }
+            else 
+                return g_values[vertex_key];
+        }
+    }
+    return 0;
+}
+
+void Graph::add_value (int vertex_key, int recieved_value) {
+    int x = value (vertex_key, recieved_value, 1, 0);
+}
+/*
+    if (true_if_add) {
+        if (!true_if_replace_or_remove && gr->key[vertex_key].value != -1) {
+            fprintf (stdout, "The value already exists\n");
+            if (err != NULL)
+                *err = EEXIST;
+            return -1;
+        }
+        else {
+            gr->key[vertex_key].value = recieved_value;
+            if (err != NULL)
+                *err = ESUCCESS;
+            return 0;
+        }
+    }
+    else {
+        if (true_if_replace_or_remove) {
+            gr->key[vertex_key].value = vertex_without_value;
             if (err != NULL)
                 *err = ESUCCESS;
             return 0;
         }
         else {
-            if (gr->key[from].adjacent_vertices[to] == 0) {
-                fprintf (stdout, "The edge doesn't exist\n");
+            if (gr->key[vertex_key].value == vertex_without_value) {
+                fprintf (stdout, "The value doesn't exist\n");
                 if (err != NULL)
                     *err = ENEXIST;
-                return 0;
+                return -2;
             }
             else {
                 if (err != NULL)
                     *err = ESUCCESS;
-                return gr->key[from].adjacent_vertices[to];
+                return gr->key[vertex_key].value;
             }
         }
     }
