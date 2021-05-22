@@ -209,6 +209,90 @@ int main() {
 
 
 
+    cout << "Test_24_remove_edge_from_<_0:\n";
+    try {
+        g1->remove_edge(-1, 0);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_24\t\tpassed\n";
+        else
+            cout << "Test_24\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_24\t\tfailed\n";
+    }
+    cout << "Test_25_remove_edge_from_>_n:\n";
+    try {
+        g1->remove_edge(15, 0);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_25\t\tpassed\n";
+        else
+            cout << "Test_25\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_25\t\tfailed\n";
+    }
+    cout << "Test_26_remove_edge_to_<_0:\n";
+    try {
+        g1->remove_edge(0, -1);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_26\t\tpassed\n";
+        else
+            cout << "Test_26\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_26\t\tfailed\n";
+    }
+    cout << "Test_27_remove_edge_to_>_n:\n";
+    try {
+        g1->remove_edge(0, 15);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_27\t\tpassed\n";
+        else
+            cout << "Test_27\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_27\t\tfailed\n";
+    }
+    cout << "Test_28_remove_edge_loop:\n";
+    try {
+        g1->remove_edge(0, 0);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_28\t\tpassed\n";
+        else
+            cout << "Test_28\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_28\t\tfailed\n";
+    }
+    cout << "Test_29_remove_edge:\n";
+    try {
+        g1->remove_edge(0, 2);
+    } catch (...) {
+        cout << "Test_29\t\tfailed\n"; 
+    }
+    cout << "Test_29\t\tpassed\n";
+    cout << "Test_30_remove_edge_already_not_exists:\n";
+    try {
+        g1->remove_edge(1, 0);
+    } catch (...) {
+        cout << "Test_30\t\tfailed\n";
+    }
+    cout << "Test_30\t\tpassed\n";
+    cout<<endl;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

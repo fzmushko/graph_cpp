@@ -24,8 +24,8 @@ public:
     int edge (int from, int to, int cost, bool true_if_add, bool true_if_replace_or_remove);
     void add_edge (int from, int to, int cost);
     void add_or_replace_edge (int from, int to, int cost);
-    /*void remove_edge (int from, int to);
-    int edge_cost (int from, int to);
+    void remove_edge (int from, int to);
+    /*int edge_cost (int from, int to);
     */
     friend ostream &operator<<(ostream &output, const Graph *g) {
         if (g == NULL) {

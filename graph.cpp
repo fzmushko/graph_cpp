@@ -96,6 +96,10 @@ void Graph::add_edge (int from, int to, int cost) {
 void Graph::add_or_replace_edge (int from, int to, int cost) {
     int x = edge (from, to, cost, 1, 1);
 }
+
+void Graph::remove_edge (int from, int to) {
+    int x = edge (from, to, 1, 0, 1);
+}
  /*
     if (true_if_add) {
         if (true_if_replace_or_remove) {
