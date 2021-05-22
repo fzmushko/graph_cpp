@@ -284,6 +284,85 @@ int main() {
 
 
 
+    int x;
+    cout << "Test_31_edge_cost_from_<_0:\n";
+    try {
+        x = g1->edge_cost(-1, 0);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_31\t\tpassed\n";
+        else
+            cout << "Test_31\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_31\t\tfailed\n";
+    }
+    cout << "Test_32_edge_cost_from_>_n:\n";
+    try {
+        x = g1->edge_cost(15, 0);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_32\t\tpassed\n";
+        else
+            cout << "Test_32\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_32\t\tfailed\n";
+    }
+    cout << "Test_33_edge_cost_to_<_0:\n";
+    try {
+        x = g1->edge_cost(0, -1);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_33\t\tpassed\n";
+        else
+            cout << "Test_33\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_33\t\tfailed\n";
+    }
+    cout << "Test_34_edge_cost_to_>_n:\n";
+    try {
+        x = g1->edge_cost(0, 15);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_34\t\tpassed\n";
+        else
+            cout << "Test_34\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_34\t\tfailed\n";
+    }
+    cout << "Test_35_edge_cost_loop:\n";
+    try {
+        x = g1->edge_cost(0, 0);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_35\t\tpassed\n";
+        else
+            cout << "Test_35\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_35\t\tfailed\n";
+    }
+    cout << "Test_36_edge_cost:\n";
+    try {
+        x = g1->edge_cost(0, 1);
+    } catch (...) {
+        cout << "Test_36\t\tfailed\n";
+    }
+    if (x == 3)
+        cout << "Test_36\t\tpassed\n";
+    else 
+        cout << "Test_36\t\tfailed\n";
+    cout << "Test_37_edge_cost_not_exists:\n";
+    try {
+        x = g1->edge_cost(1, 0);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::ENEXISTS)
+            cout << "Test_37\t\tpassed\n";
+        else
+            cout << "Test_37\t\tfailed\n";
+    } catch (...) {
+        cout << "Test_37\t\tfailed\n";
+    }
+    cout<<endl;
+
 
 
 

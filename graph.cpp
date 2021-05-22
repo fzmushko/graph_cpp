@@ -40,22 +40,18 @@ int Graph::edge (int from, int to, int cost, bool true_if_add, bool true_if_repl
     if (from < 0 || from  >= g_size) {
         cout << "Invalid argument: vertex 'from'\n";
         throw EINVARG;
-        return -1;
     }
     if (to < 0 || to >= g_size) {
         cout << "Invalid argument: vertex 'to'\n";
         throw EINVARG;
-        return -1;
     }
     if (from == to) {
         cout << "Invalid argument: loops are not allowed\n";
         throw EINVARG;
-        return -1;
     }
     if (cost < 1) {
         cout << "Invalid argument: cost of edge should be more than 0\n";
         throw EINVARG;
-        return -1;
     }
     if (true_if_add) {
         if (true_if_replace_or_remove) 
@@ -66,7 +62,6 @@ int Graph::edge (int from, int to, int cost, bool true_if_add, bool true_if_repl
             else {
                 cout << "The edge already exists\n";
                 throw EEXISTS;
-                return -1;
             }
         }
         return 0;
@@ -80,7 +75,6 @@ int Graph::edge (int from, int to, int cost, bool true_if_add, bool true_if_repl
             if (g_edges[from][to] == 0) {
                 cout << "The edge doesn't exist\n";
                 throw ENEXISTS;
-                return 0;
             }
             else 
                 return g_edges[from][to]; 
@@ -99,6 +93,10 @@ void Graph::add_or_replace_edge (int from, int to, int cost) {
 
 void Graph::remove_edge (int from, int to) {
     int x = edge (from, to, 1, 0, 1);
+}
+
+int Graph::edge_cost (int from, int to) {
+    return edge(from, to, 1, 0, 0);
 }
  /*
     if (true_if_add) {
