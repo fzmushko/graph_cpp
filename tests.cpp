@@ -29,6 +29,13 @@ int main() {
         cout << "Test_2\tfailed" << endl;
     }
     cout << "Test_2\tpassed" << endl;
+    delete g2;
+    try {
+        g2 = new Graph(5);
+    } catch (...) {
+        cout << "Test_2\tfailed" << endl;
+    }
+    cout << "Test_2\tpassed" << endl;
 
 
 
@@ -585,43 +592,61 @@ int main() {
 
 
     Graph *g3 = NULL;
-    g3 = new Graph(g1);
-
-    cout << g3;
+    cout << "Test_56_create_graph_with_size:" << endl;
+    try {
+        g3 = new Graph(g1);
+    } catch (...) {
+        cout << "Test_56\tfailed" << endl;
+    }
+    cout << "Test_56\tpassed" << endl;
+    cout << *g3;
+    g2->add_edge(0, 2, 2);
+    g2->add_value(1, 2);
+    cout << "Test_56_operator_=:" << endl;
+    try {
+		*g3 = *g2;
+	} catch (...) {
+		cout << "Test_57\t->\tFAILED" << endl;
+	}
+	cout << "Test_57\t->\tPASSED" << endl;
+    cout << *g3;
     delete g3;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
     
-    cout << g1;
 
-    cout << g2;
-    g2 = NULL;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    cout << *g1;
+    
+    cout << *g2;
+    
+    
     try {
         cout << g2;
     } catch (Graph::graph_error &ex) {
@@ -633,7 +658,7 @@ int main() {
         cout << "Test_print_NULL\tfailed\n";
     }
 
-*/
+
 
     
 

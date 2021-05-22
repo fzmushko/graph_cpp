@@ -31,39 +31,39 @@ public:
     void add_or_replace_value (int vertex_key, int recieved_value);
     void remove_value (int vertex_key);
     int get_value (int vertex_key);
+    Graph& operator=(const Graph &g1);
     
     int **edges() const { return g_edges; };
 	int size() const { return g_size; };
 	int *values() const { return g_values; };
 
-    friend ostream &operator<<(ostream &output, const Graph (*g)) {
-        if (g == NULL) {
-            throw EINVARG;
-        }
-        if ((*g).g_size == 0) {
+    friend ostream &operator<<(ostream &output, const Graph &g) {
+        if (g.g_size == 0) {
             output << "No vertices in graph" << endl;
             return output;
         }
-        output << "Number of vertices - " << (*g).g_size << "\n";
-        for (int i = 0; i < (*g).g_size; ++i)
+        output << "Number of vertices - " << g.g_size << "\n";
+        for (int i = 0; i < g.g_size; ++i)
             output <<  "\t" << i;
         output << "\n";
-        for (int i = 0; i < (*g).g_size; ++i) {
+        for (int i = 0; i < g.g_size; ++i) {
             output << i << "\t";
-            for (int j = 0; j < (*g).g_size; ++j) 
-                output << (*g).g_edges[i][j] << "\t";
+            for (int j = 0; j < g.g_size; ++j) 
+                output << g.g_edges[i][j] << "\t";
             output << "\n";
         }
-        for (int i = 0; i < (*g).g_size; ++i)
-            output << i << "\t" << (*g).g_values[i] << endl;
+        for (int i = 0; i < g.g_size; ++i)
+            output << i << "\t" << g.g_values[i] << endl;
         return output;
     }
 
-
-private:
     int **g_edges;
     int *g_values;
     int g_size;
+
+
+private:
+    
 };
 /*
 typedef struct vertex {

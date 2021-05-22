@@ -170,3 +170,25 @@ void Graph::remove_value (int vertex_key) {
 int Graph::get_value (int vertex_key) {
     return value (vertex_key, 1, 0, 0);
 }
+
+Graph& Graph::operator=(const Graph &g1) {
+	delete [] g_values;
+    g_values = NULL;
+    for (int i = 0; i < g_size; ++i)
+        delete [] g_edges[i];
+    delete [] g_edges;
+    g_edges = NULL;
+    g_size = g1.g_size;
+    cout << g_size << endl;
+	g_values = new int [g_size];
+    memcpy(g_values, g1.values(), g_size * sizeof(int));
+    g_edges = new int* [g_size];
+    for (int i = 0; i < g_size; ++i)
+        g_edges[i] = new int [g_size];
+    for (int i = 0; i < g_size; ++i) {
+        for (int j = 0; j < g_size; ++j)
+            g_edges[i][j] = g1.g_edges[i][j];
+    }
+	return *this;
+}
+
