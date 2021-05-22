@@ -484,6 +484,62 @@ int main() {
 
 
 
+    cout << "Test_48_remove_value_to_vertex_<_0:\n";
+    try {
+        g1->remove_value(-1);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_48\t\tpassed\n";
+        else
+            cout << "Test_48\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_48\t\tfailed\n";
+    }
+    cout << "Test_49_remove_value_to_vertex_>_n:\n";
+    try {
+        g1->remove_value(15);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_49\t\tpassed\n";
+        else
+            cout << "Test_49\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_49\t\tfailed\n";
+    }
+    cout << "Test_50_remove_value:\n";
+    try {
+        g1->remove_value(1);
+    } catch (...) {
+        cout << "Test_50\t\tfailed\n";
+    }
+    cout << "Test_50\t\tpassed\n";
+    cout << "Test_51_remove_value_already_not_exists:\n";
+    try {
+        g1->remove_value(2);
+    } catch (...) {
+        cout << "Test_51\t\tfailed\n";
+    }
+    cout << "Test_51\t\tpassed\n";
+    cout<<endl;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

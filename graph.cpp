@@ -156,6 +156,12 @@ void Graph::add_value (int vertex_key, int recieved_value) {
 void Graph::add_or_replace_value (int vertex_key, int recieved_value) {
     int x = value(vertex_key, recieved_value, 1, 1);
 }
+
+void Graph::remove_value (int vertex_key) {
+    int x = value(vertex_key, 1, 0, 1);
+}
+
+
 /*
     if (true_if_add) {
         if (!true_if_replace_or_remove && gr->key[vertex_key].value != -1) {

@@ -29,8 +29,8 @@ public:
     int value (int vertex_key, int recieved_value, bool true_if_add, bool true_if_replace_or_remove);
     void add_value (int vertex_key, int recieved_value);
     void add_or_replace_value (int vertex_key, int recieved_value);
-    /*void remove_value (int vertex_key);
-    int get_value (int vertex_key);
+    void remove_value (int vertex_key);
+    /*int get_value (int vertex_key);
     */
 
     friend ostream &operator<<(ostream &output, const Graph (*g)) {
@@ -53,7 +53,6 @@ public:
         }
         for (int i = 0; i < (*g).g_size; ++i)
             output << i << "\t" << (*g).g_values[i] << endl;
-        g == NULL;
         return output;
     }
 
