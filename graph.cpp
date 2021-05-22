@@ -30,16 +30,22 @@ Graph::Graph(int size) {
     }
     g_size = size;
 }
-/*
-Graph::Graph(const Graph &g) {
-    int n = g.g_size;
+
+Graph::Graph(const Graph *g) {
+    int n = (*g).g_size;
     g_edges = new int* [n];
     for (int i = 0; i < n; ++i)
         g_edges[i] = new int [n];
     g_values = new int [n];
     g_size = n;
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j)
+            g_edges[i][j] = (*g).g_edges[i][j];
+    }
+    for (int i = 0; i < n; ++i)
+        g_values[i] = (*g).g_values[i];
 }
-*/
+
 
 Graph::~Graph() {
     delete [] g_values;
@@ -164,42 +170,3 @@ void Graph::remove_value (int vertex_key) {
 int Graph::get_value (int vertex_key) {
     return value (vertex_key, 1, 0, 0);
 }
-
-/*
-    if (true_if_add) {
-        if (!true_if_replace_or_remove && gr->key[vertex_key].value != -1) {
-            fprintf (stdout, "The value already exists\n");
-            if (err != NULL)
-                *err = EEXIST;
-            return -1;
-        }
-        else {
-            gr->key[vertex_key].value = recieved_value;
-            if (err != NULL)
-                *err = ESUCCESS;
-            return 0;
-        }
-    }
-    else {
-        if (true_if_replace_or_remove) {
-            gr->key[vertex_key].value = vertex_without_value;
-            if (err != NULL)
-                *err = ESUCCESS;
-            return 0;
-        }
-        else {
-            if (gr->key[vertex_key].value == vertex_without_value) {
-                fprintf (stdout, "The value doesn't exist\n");
-                if (err != NULL)
-                    *err = ENEXIST;
-                return -2;
-            }
-            else {
-                if (err != NULL)
-                    *err = ESUCCESS;
-                return gr->key[vertex_key].value;
-            }
-        }
-    }
-    return 0;
-*/

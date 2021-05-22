@@ -584,6 +584,11 @@ int main() {
 
 
 
+    Graph *g3 = NULL;
+    g3 = new Graph(g1);
+
+    cout << g3;
+    delete g3;
 
 
 
@@ -610,6 +615,8 @@ int main() {
 
 
 
+
+    /*
     
     cout << g1;
 
@@ -626,7 +633,7 @@ int main() {
         cout << "Test_print_NULL\tfailed\n";
     }
 
-
+*/
 
     
 

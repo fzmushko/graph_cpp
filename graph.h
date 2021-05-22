@@ -19,7 +19,7 @@ public:
 
     Graph();
     Graph (int size);
-    Graph (const Graph &g);
+    Graph (const Graph *g);
     ~Graph();
     int edge (int from, int to, int cost, bool true_if_add, bool true_if_replace_or_remove);
     void add_edge (int from, int to, int cost);
