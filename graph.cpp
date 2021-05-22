@@ -90,9 +90,13 @@ int Graph::edge (int from, int to, int cost, bool true_if_add, bool true_if_repl
 }
 
 void Graph::add_edge (int from, int to, int cost) {
-    edge (from, to, cost, 1, 0);
+    int x = edge (from, to, cost, 1, 0);
 }
-/*
+
+void Graph::add_or_replace_edge (int from, int to, int cost) {
+    int x = edge (from, to, cost, 1, 1);
+}
+ /*
     if (true_if_add) {
         if (true_if_replace_or_remove) {
             gr->key[from].adjacent_vertices[to] = cost;
