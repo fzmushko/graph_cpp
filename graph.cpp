@@ -161,6 +161,9 @@ void Graph::remove_value (int vertex_key) {
     int x = value(vertex_key, 1, 0, 1);
 }
 
+int Graph::get_value (int vertex_key) {
+    return value (vertex_key, 1, 0, 0);
+}
 
 /*
     if (true_if_add) {

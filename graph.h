@@ -30,8 +30,11 @@ public:
     void add_value (int vertex_key, int recieved_value);
     void add_or_replace_value (int vertex_key, int recieved_value);
     void remove_value (int vertex_key);
-    /*int get_value (int vertex_key);
-    */
+    int get_value (int vertex_key);
+    
+    int **edges() const { return g_edges; };
+	int size() const { return g_size; };
+	int *values() const { return g_values; };
 
     friend ostream &operator<<(ostream &output, const Graph (*g)) {
         if (g == NULL) {

@@ -484,7 +484,7 @@ int main() {
 
 
 
-    cout << "Test_48_remove_value_to_vertex_<_0:\n";
+    cout << "Test_48_remove_value_from_vertex_<_0:\n";
     try {
         g1->remove_value(-1);
     } catch (Graph::graph_error &ex) {
@@ -495,7 +495,7 @@ int main() {
     } catch (...) {
         cout << "Test_48\t\tfailed\n";
     }
-    cout << "Test_49_remove_value_to_vertex_>_n:\n";
+    cout << "Test_49_remove_value_from_vertex_>_n:\n";
     try {
         g1->remove_value(15);
     } catch (Graph::graph_error &ex) {
@@ -521,6 +521,62 @@ int main() {
     }
     cout << "Test_51\t\tpassed\n";
     cout<<endl;
+
+
+
+
+
+
+
+
+
+
+    x = -1;
+    cout << "Test_52_get_value_from_vertex_<_0:\n";
+    try {
+        x = g1->get_value(-1);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_52\t\tpassed\n";
+        else
+            cout << "Test_52\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_52\t\tfailed\n";
+    }
+    cout << "Test_53_get_value_from_vertex_>_n:\n";
+    try {
+        x = g1->get_value(15);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::EINVARG) 
+            cout << "Test_53\t\tpassed\n";
+        else
+            cout << "Test_53\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_53\t\tfailed\n";
+    }
+    cout << "Test_54_remove_value:\n";
+    try {
+        x = g1->get_value(0);
+    } catch (...) {
+        cout << "Test_54\t\tfailed\n";
+    }
+    if (x == 3)
+        cout << "Test_54\t\tpassed\n";
+    else 
+        cout << "Test_54\t\tfailed\n";
+    cout << "Test_55_remove_value_already_not_exists:\n";
+    try {
+        x = g1->get_value(2);
+    } catch (Graph::graph_error &ex) {
+        if (ex == Graph::ENEXISTS) 
+            cout << "Test_55\t\tpassed\n";
+        else
+            cout << "Test_55\t\tfailed\n"; 
+    } catch (...) {
+        cout << "Test_55\t\tfailed\n";
+    }
+    cout<<endl;
+
 
 
 
